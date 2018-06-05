@@ -1,5 +1,7 @@
 # Inn (tax reference number) Parser (Ukraine)
 
+[![Latest Stable Version](https://poser.pugx.org/horat1us/inn-parser/version)](https://packagist.org/packages/horat1us/inn-parser)
+[![Total Downloads](https://poser.pugx.org/horat1us/inn-parser/downloads)](https://packagist.org/packages/horat1us/inn-parser)
 [![Build Status](https://travis-ci.org/Horat1us/inn-parser.svg?branch=master)](https://travis-ci.org/Horat1us/inn-parser)
 [![codecov](https://codecov.io/gh/horat1us/inn-parser/branch/master/graph/badge.svg)](https://codecov.io/gh/horat1us/inn-parser)
 
