@@ -8,6 +8,7 @@ use Horat1us\Inn;
 /**
  * Class ParserTest
  * @package Horat1us\Inn\Tests
+ * @coversDefaultClass \Horat1us\Inn\Parser
  */
 class ParserTest extends TestCase
 {
@@ -33,5 +34,23 @@ class ParserTest extends TestCase
     public function testBirthDate(): void
     {
         $this->assertEquals(new \DateTime('03/12/1987'), $this->parser->birthDate());
+    }
+
+    public function testParse(): void
+    {
+        $info = $this->parser->parse();
+
+        $this->assertTrue($info->isValid());
+        $this->assertEquals(Inn\Gender::MALE, $info->getGender());
+        $this->assertEquals(new \DateTime('03/12/1987'), $info->getBirthDate());
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Inn must contain 10 digits
+     */
+    public function testInvalidInn(): void
+    {
+        new Inn\Parser("invalidInn");
     }
 }
