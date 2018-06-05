@@ -8,6 +8,7 @@ use Horat1us\Inn;
 /**
  * Class InfoTest
  * @package Horat1us\Inn\Tests
+ * @coversDefaultClass \Horat1us\Inn\Info
  */
 class InfoTest extends TestCase
 {
