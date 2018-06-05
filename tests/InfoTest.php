@@ -49,4 +49,13 @@ class InfoTest extends TestCase
             $this->assertEquals(new \DateTime(static::BIRTH_DATE), $this->info->getBirthDate());
         }
     }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Gender must be male or female
+     */
+    public function testInvalidGender(): void
+    {
+        new Inn\Info("invalidGender", new \DateTime, static::IS_VALID);
+    }
 }
