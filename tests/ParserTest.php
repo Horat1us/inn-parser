@@ -53,4 +53,13 @@ class ParserTest extends TestCase
     {
         new Inn\Parser("invalidInn");
     }
+
+    public function testMaximalValue(): void
+    {
+        $minValue = Inn\Parser::minimalValue();
+        $this->assertRegExp('/0{5,}$/', (string)$minValue);
+        $maxValue = Inn\Parser::maximalValue();
+        $this->assertRegExp('/9{5,}$/', (string)$maxValue);
+        $this->assertLessThan($maxValue, $minValue);
+    }
 }
