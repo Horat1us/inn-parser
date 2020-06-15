@@ -28,6 +28,7 @@
   ],
   "minimum-stability": "stable",
   "scripts": {
-    "test": "./vendor/bin/phpunit"
+    "test": "./vendor/bin/phpunit",
+    "lint": "./vendor/bin/phpcs --standard=PSR2 ./src ./tests"
   }
 }
