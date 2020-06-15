@@ -1,17 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Horat1us\Inn;
 
-/**
- * Class Parser
- * @package Horat1us\Inn
- */
 class Parser
 {
     public const PATTERN = '/^\d{10}$/';
     public const START_DATE = '1900-01-01';
 
-    protected $inn;
+    protected string $inn;
 
     public function __construct(string $inn)
     {
@@ -64,7 +62,7 @@ class Parser
         return new Info($this->gender(), $this->birthDate(), $this->isValid());
     }
 
-    public static function maximalValue(int $age = 18, $padStr = '9'): string
+    public static function maximalValue(int $age = 18, $padStr = '9'): int
     {
         return (int)str_pad(
             date_create("- {$age} years")->diff(date_create(static::START_DATE))->format('%a'),
@@ -73,7 +71,7 @@ class Parser
         );
     }
 
-    public static function minimalValue(int $age = 70): string
+    public static function minimalValue(int $age = 70): int
     {
         return static::maximalValue($age, '0');
     }

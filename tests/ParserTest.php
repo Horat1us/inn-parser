@@ -45,21 +45,19 @@ class ParserTest extends TestCase
         $this->assertEquals(new \DateTime('03/12/1987'), $info->getBirthDate());
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Inn must contain 10 digits
-     */
     public function testInvalidInn(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Inn must contain 10 digits');
         new Inn\Parser("invalidInn");
     }
 
     public function testMaximalValue(): void
     {
         $minValue = Inn\Parser::minimalValue();
-        $this->assertRegExp('/0{5,}$/', (string)$minValue);
+        $this->assertMatchesRegularExpression('/0{5,}$/', (string)$minValue);
         $maxValue = Inn\Parser::maximalValue();
-        $this->assertRegExp('/9{5,}$/', (string)$maxValue);
+        $this->assertMatchesRegularExpression('/9{5,}$/', (string)$maxValue);
         $this->assertLessThan($maxValue, $minValue);
     }
 }

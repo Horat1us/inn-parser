@@ -1,21 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Horat1us\Inn;
 
-/**
- * Class Info
- * @package Horat1us\Inn
- */
 class Info
 {
-    /** @var string */
-    protected $gender;
+    protected bool $gender;
 
     /** @var bool */
-    protected $isValid;
+    protected bool $isValid;
 
-    /** @var \DateTimeInterface */
-    protected $birthDate;
+    protected \DateTimeInterface $birthDate;
 
     public function __construct(string $gender, \DateTimeInterface $birthDate, bool $isValid)
     {
@@ -31,7 +27,7 @@ class Info
 
     public function getGender(): string
     {
-        return $this->gender;
+        return $this->gender ? Gender::MALE : Gender::FEMALE;
     }
 
     public function getBirthDate(): \DateTimeInterface
@@ -41,10 +37,15 @@ class Info
 
     protected function setGender(string $gender): void
     {
-        $isGenderValid = $gender === Gender::MALE || $gender === Gender::FEMALE;
-        if (!$isGenderValid) {
-            throw new \InvalidArgumentException("Gender must be " . Gender::MALE . " or " . Gender::FEMALE);
+        switch ($gender) {
+            case Gender::MALE:
+                $this->gender = true;
+                break;
+            case Gender::FEMALE:
+                $this->gender = false;
+                break;
+            default:
+                throw new \InvalidArgumentException("Gender must be " . Gender::MALE . " or " . Gender::FEMALE);
         }
-        $this->gender = $gender;
     }
 }
