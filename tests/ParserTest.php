@@ -52,6 +52,13 @@ class ParserTest extends TestCase
         new Inn\Parser("invalidInn");
     }
 
+    public function testValidCheckSum(): void
+    {
+        $parser = new Inn\Parser("3584004820");
+
+        $this->assertEquals(true, $parser->isValid());
+    }
+
     public function testMaximalValue(): void
     {
         $minValue = Inn\Parser::minimalValue();

@@ -46,6 +46,9 @@ class Parser
         }
 
         $control = (int)($controlSum - (11 * (int)($controlSum / 11)));
+        if ($control === 10) {
+            $control = 0;
+        }
 
         return $control == (int)$split[9];
     }
